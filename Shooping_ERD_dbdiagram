@@ -1,0 +1,63 @@
+Table customer {
+  customer_id varchar [pk]
+  name varchar
+  email varchar
+  phone_number varchar
+  address varchar
+  city varchar
+  province varchar
+  postal_code varchar
+}
+
+Table products {
+  product_id int [pk]
+  category_id varchar
+  product_name varchar
+  description varchar
+  price int
+  stock int
+}
+
+Table category {
+category_id string [pk]
+category_name string
+description string
+}
+
+Table orders {
+  order_id int [pk]
+  customer_id varchar
+  product_id int
+  order_date timestamp
+  qty int
+}
+
+Table payment {
+  payment_id int [pk]
+  order_id int
+  customer_id varchar
+  payment_date timestamp
+  payment_method varchar
+  amount int
+  status varchar
+}
+
+Table shipment {
+  shipment_id int [pk]
+  order_id int
+  address varchar
+  courier varchar
+  tracking_number varchar
+}
+
+
+
+Ref: category.category_id < products.category_id
+  
+Ref: customer.customer_id < orders.customer_id
+
+Ref: products.product_id < orders.product_id
+
+Ref: orders.order_id - payment.order_id
+
+Ref: orders.order_id - shipment.order_id

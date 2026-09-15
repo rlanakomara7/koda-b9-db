@@ -49,4 +49,5 @@ erDiagram
     Book ||--o{ Borrowing : "borrowed"
     Member ||--o{ Borrowing : "makes"
     Staff ||--o{ Borrowing : "processes"
+
 ```

@@ -1,0 +1,61 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table Book{
+  id_book int [pk]
+  title varchar
+  category varchar
+  edition varchar
+  publishing varchar
+  publication_date date
+  author varchar 
+  id_category int 
+  id_rack int 
+}
+
+Table Category{
+  id_category int [pk]
+  genre varchar
+  description varchar
+}
+
+Table Rack_Book{
+  id_rack int [pk]
+  location varchar
+}
+
+Table Staff{
+  id_staff int [pk]
+  name varchar
+}
+
+Table Borrowing{
+  id_borrow int [pk]
+  id_book int
+  id_member int
+  id_staff int
+  borrow_date date
+  return_date date
+}
+
+Table Member {
+  id_member int [pk]
+  name varchar
+  phone varchar
+}
+
+
+Ref: "Category"."id_category" < "Book"."id_category"
+
+Ref: "Rack_Book"."id_rack" < "Book"."id_rack" 
+
+Ref: "Borrowing"."id_staff" > "Staff"."id_staff"
+
+Ref: "Book"."id_book" < "Borrowing"."id_book"
+
+Ref: "Borrowing"."id_member" > "Member"."id_member"
+
+
+
+
+

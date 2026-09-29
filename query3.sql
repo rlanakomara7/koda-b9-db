@@ -34,8 +34,8 @@ ORDER BY jumlah_film DESC
 LIMIT 1;
 
 SELECT 
-    m.title,
-    STRING_AGG(a.first_name || ' ' || a.last_name, ', ') AS list_actors
+m.title,
+STRING_AGG(a.first_name || ' ' || a.last_name, ', ') AS list_actors
 FROM movies m
 JOIN movies_actors ma ON m.id = ma.movie_id
 JOIN actors a ON ma.actor_id = a.id

@@ -1,0 +1,11 @@
+CREATE TABLE accounts (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(100) UNIQUE NOT NULL ,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    update_at TIMESTAMPTZ
+);
+
+ALTER TABLE accounts
+ADD COLUMN role USER_ROLE NOT NULL DEFAULT 'member';
+SELECT*FROM accounts;
